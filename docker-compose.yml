@@ -1,0 +1,15 @@
+services:
+  sno_bot:
+    build: .
+    container_name: sno_telegram_bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      # Пробрасываем базу данных на диск WSL для сохранения данных
+      - ./sno_bot.db:/app/sno_bot.db
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
