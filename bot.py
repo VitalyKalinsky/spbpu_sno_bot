@@ -40,7 +40,9 @@ dp = Dispatcher()
 router = Router()
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_NAME = os.path.join(BASE_DIR, "sno_bot.db")
+DATA_DIR = os.path.join(BASE_DIR, "data")
+os.makedirs(DATA_DIR, exist_ok=True)  # Автоматически создаст папку, если ее нет
+DB_NAME = os.path.join(DATA_DIR, "sno_bot.db")
 
 # ================= База Данных =================
 async def init_db():
